@@ -1,0 +1,5 @@
+after the celery implementation
+--bash--
+
+celery -A <project_name> beat -l INFO
+celery -A <project_name> worker -l INFO

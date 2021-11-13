@@ -11,9 +11,9 @@ app = Celery('main')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.conf.beat_schedule = {
-    'get_coins_data_30s': {
-        'task': 'coins.tasks.coins_data',
-        'schedule': 30.0    # refresh time 30 secs
+    'crypto_data_10s': {
+        'task': 'crypto.tasks.crypto_data',
+        'schedule': 10.0    # refresh time 10 secs
     }
 }
 
