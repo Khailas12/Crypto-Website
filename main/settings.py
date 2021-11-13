@@ -2,6 +2,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+import os
+from dotenv import load_dotenv
 
 
 # Quick-start development settings - unsuitable for production
@@ -63,10 +65,25 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+load_dotenv()
+psql_name = os.getenv('POSTGRES_NAME')
+psql_pswd = os.getenv('POSTGRES_PSWD')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'crypto_website',
+        'USER': psql_name,
+        'PASSWORD': psql_pswd,
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
