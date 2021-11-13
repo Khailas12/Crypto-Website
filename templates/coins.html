@@ -1,0 +1,15 @@
+{% for coin in coins %}
+
+<tr>
+    <td class="align-middle">{{ coin.market_cap_rank }}</td>
+
+    <td class="align-middle">
+        <img src='{{ coin.image }}' alt='' class='px-2' width='50px'>
+        {{ coin.name }}
+        <small class="text-muted px-2">{{ coin.symbol }}</small>
+    </td>
+
+    <td class="align-middle">₹{{ coin.current_price }}</td>
+</tr>
+
+{% endfor %}
