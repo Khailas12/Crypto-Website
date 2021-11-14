@@ -1,6 +1,5 @@
 # Celery communicates via messages, usually using a broker to mediate between clients and workers. Worker is the function that executes the task. The django passes the defined task to the celery workers and  broker is the task queue that stores the task.
 
-
 import os
 from celery import Celery
 

@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'crypto',
+    
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -60,8 +62,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'main.wsgi.application'
+ASGI_APPLICATION = 'main.asgi.application'  # channel added
 CELERY_BROKER_URL = 'redis://localhost:6379'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

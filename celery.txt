@@ -3,3 +3,5 @@ after the celery implementation
 
 celery -A <project_name> beat -l INFO
 celery -A <project_name> worker -l INFO
+
+celery -A <project_name> worker -l info -P gevent          -> use this if the prior worker doesn't work
