@@ -1,8 +1,12 @@
 import requests
 from .models import Coin
-from django.forms.models import model_to_dict
 from celery import shared_task
+from channels.layers import get_channel_layer
+from django.forms.models import model_to_dict
+from asgiref.sync import async_to_sync
 
+
+channel_layer = get_channel_layer()
 
 @shared_task    # refreshes the coins price every 10 secs
 def crypto_data():
@@ -36,3 +40,8 @@ def crypto_data():
         new_data.update({'state': state})
         
         crypto.append(new_data)
+        
+    async_to_sync(channel_layer.group_send)('coins', {
+        'type': 'send_new_data',
+        'text': crypto,
+    })

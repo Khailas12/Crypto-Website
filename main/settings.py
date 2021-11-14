@@ -65,15 +65,15 @@ WSGI_APPLICATION = 'main.wsgi.application'
 ASGI_APPLICATION = 'main.asgi.application'  # channel added
 CELERY_BROKER_URL = 'redis://localhost:6379'
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'host': ['127.0.0.1', 6379]
+        }
+    }
+}
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 load_dotenv()
 psql_name = os.getenv('POSTGRES_NAME')
