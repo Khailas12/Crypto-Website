@@ -1,7 +1,7 @@
 from django.urls import path
-from .consumers import CoinsConsumer
+from .consumers import CoinsConsumers
 
 
 ws_urlpatterns = [
-    path('ws/coins/', CoinsConsumer.as_asgi())
+    path('ws/coins/', CoinsConsumers.as_asgi())
 ]
