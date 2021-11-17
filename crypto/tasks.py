@@ -41,7 +41,8 @@ def crypto_data():
         
         crypto.append(new_data)
         
-    async_to_sync(channel_layer.group_send)('coins', {
+    async_to_sync(channel_layer.group_send)
+    ('coins', {
         'type': 'send_new_data',
         'text': crypto,
     })

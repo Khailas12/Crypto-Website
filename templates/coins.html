@@ -1,14 +1,11 @@
-{% for coin in coins %}
-<tr>
-    <td class="align-middle">{{ coin.market_cap_rank }}</td>
+<tr v-for='coin in coins' :key='coin.id'>
+    <td class="align-middle">{{ coin.rank }}</td>
 
     <td class="align-middle">
-        <img src='{{ coin.image }}' alt='' class='px-2' width='50px'>
+        <img :src='coin.image' alt='' class='px-2' width='50px'>
         {{ coin.name }}
         <small class="text-muted px-2">{{ coin.symbol }}</small>
     </td>
 
-    <td class="align-middle">₹ {{ coin.current_price }}</td>
+    <td class="align-middle" class="{'raise': coin.state === 'raise', 'fall': coin.state === 'fall'}">₹ {{ coin.price }}</td>
 </tr>
-
-{% endfor %}
